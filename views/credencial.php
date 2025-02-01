@@ -16,26 +16,36 @@ if (!$userData) {
 }
 
 include 'header.php';
-include 'navbar.php';
 ?>
 
 <div class="credencial-container">
-    <div class="credencial-header">
-        <h1>UVM</h1>
-    </div>
-    <div class="credencial-body">
-        <div class="user-info">
-            <h2><?php echo htmlspecialchars($userData['nombre']); ?></h2>
-            <p><?php echo htmlspecialchars($userData['carrera']); ?></p>
-            <p><?php echo htmlspecialchars($userData['plantel']); ?></p>
+    <div class="credencial-card">
+        <div class="card-header">
+            <h1 class="uvm-logo">Universidad del Norte de Tamaulipas</h1>
+            <div class="foto-container">
+                <img src="data:image/jpeg;base64,<?php echo $userData['foto']; ?>" alt="Foto del usuario" class="foto-estudiante">
+            </div>
         </div>
-        <div class="user-details">
-            <p><strong>Matrícula:</strong> <?php echo htmlspecialchars($userData['matricula']); ?></p>
-            <p><strong>Vence el:</strong> <?php echo htmlspecialchars($userData['fecha_vencimiento']); ?></p>
-        </div>
-        <div class="user-images">
-            <img src="data:image/jpeg;base64,<?php echo $userData['foto']; ?>" alt="Foto del usuario">
-            <img src="data:image/jpeg;base64,<?php echo $userData['qr']; ?>" alt="Código QR">
+        
+        <div class="card-body">
+            <h2 class="nombre-estudiante"><?php echo htmlspecialchars($userData['nombre']); ?></h2>
+            <p class="carrera"><?php echo htmlspecialchars($userData['carrera']); ?></p>
+            <p class="plantel"><?php echo htmlspecialchars($userData['plantel']); ?></p>
+
+            <div class="qr-container">
+                <img src="data:image/jpeg;base64,<?php echo $userData['qr']; ?>" alt="Código QR" class="qr-code">
+            </div>
+
+            <div class="detalles-container">
+                <div class="detalle-item">
+                    <span class="etiqueta">Matrícula</span>
+                    <span class="valor"><?php echo htmlspecialchars($userData['matricula']); ?></span>
+                </div>
+                <div class="detalle-item">
+                    <span class="etiqueta">Vence el</span>
+                    <span class="valor"><?php echo htmlspecialchars($userData['fpago']); ?></span>
+                </div>
+            </div>
         </div>
     </div>
 </div>
